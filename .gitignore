@@ -1,0 +1,30 @@
+# === Настройки PyCharm (JetBrains IDE) ===
+.idea/
+*.iml
+*.iws
+.pytest_cache/
+.tox/
+
+# === Окружения и виртуальные среды Python ===
+.venv/
+venv/
+ENV/
+env/
+bin/
+lib/
+include/
+pip-selfcheck.json
+
+# === Кэш Python и скомпилированные файлы ===
+__pycache__/
+*.py[cod]
+*$py.class
+
+# === Файлы окружения и секреты (пароли, токены) ===
+.env
+.env.local
+.env.*.local
+
+# === Специфичные файлы ОС (Mac / Windows) ===
+.DS_Store
+Thumbs.db
