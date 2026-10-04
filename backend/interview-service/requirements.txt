@@ -1,0 +1,10 @@
+# Web Framework
+fastapi==0.110.0
+uvicorn==0.28.0
+
+# Databases & Vector Search
+motor==3.3.2
+elasticsearch==8.11.1
+
+# Validation
+pydantic==2.6.4

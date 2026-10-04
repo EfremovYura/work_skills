@@ -1,0 +1,4 @@
+-r requirements.txt       # Includes all production dependencies
+pytest==8.0.2             # Core testing framework
+pytest-asyncio==0.23.5    # Extension for testing async FastAPI routes
+httpx==0.27.0             # Client to send test requests to FastAPI

@@ -1,0 +1,65 @@
+services:
+  # --- DATABASES & SEARCH INDEXES ---
+  postgres:
+    image: postgres:15-alpine
+    container_name: career-postgres
+    environment:
+      POSTGRES_USER: career_user
+      POSTGRES_PASSWORD: career_password
+      POSTGRES_DB: career_hub_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./infra/postgres/data:/var/lib/postgresql/data
+    networks:
+      - career_network
+
+  mongodb:
+    image: mongo:6.0
+    container_name: career-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: career_root
+      MONGO_INITDB_ROOT_PASSWORD: career_root_password
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./infra/mongo/data:/data/db
+    networks:
+      - career_network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    container_name: career-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false # Disable security for local development
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # Restrict memory usage for local machine
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./infra/elastic/data:/usr/share/elasticsearch/data
+    networks:
+      - career_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: career-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - career_network
+
+  # --- AI ENGINE ---
+  ollama:
+    image: ollama/ollama:latest
+    container_name: career-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./infra/ollama/data:/root/.ollama
+    networks:
+      - career_network
+
+networks:
+  career_network:
+    driver: bridge

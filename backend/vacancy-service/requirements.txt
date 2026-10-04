@@ -1,0 +1,11 @@
+# Web Framework
+fastapi==0.110.0
+uvicorn==0.28.0
+
+# Databases & Search
+sqlalchemy==2.0.28
+asyncpg==0.29.0
+elasticsearch==8.11.1
+
+# Validation
+pydantic==2.6.4
